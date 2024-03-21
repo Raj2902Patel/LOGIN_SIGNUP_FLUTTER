@@ -15,11 +15,9 @@ class LoginOption extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         Container(
           height: 40,
           decoration: BoxDecoration(
@@ -36,7 +34,7 @@ class LoginOption extends StatelessWidget {
               ),
             ],
           ),
-          child:  const Center(
+          child: const Center(
             child: Text(
               "LOGIN",
               style: TextStyle(
@@ -47,7 +45,6 @@ class LoginOption extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }

@@ -21,33 +21,44 @@ class _SignUpState extends State<SignUp> {
   TextEditingController pass = TextEditingController();
 
   Future register() async {
-    var url = Uri.http("10.0.2.2", '/caps/register.php', {'q': '{http}'});
-    var response = await http.post(url, body: {
-      "username": user.text.toString(),
-      "password": pass.text.toString(),
-    });
-    var data = json.decode(response.body);
-    if (data == "Error") {
+    if (user.text != "" || pass.text != "") {
+      var url = Uri.http("10.0.2.2", '/caps/register.php', {'q': '{http}'});
+      var response = await http.post(url, body: {
+        "username": user.text.toString(),
+        "password": pass.text.toString(),
+      });
+      var data = json.decode(response.body);
+      if (data == "Error") {
+        Fluttertoast.showToast(
+          backgroundColor: Colors.orange,
+          textColor: Colors.white,
+          msg: 'User Already Exit!',
+          toastLength: Toast.LENGTH_SHORT,
+        );
+      } else {
+        Fluttertoast.showToast(
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          msg: 'Registration Successful',
+          toastLength: Toast.LENGTH_SHORT,
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DashBoard(),
+          ),
+        );
+      }
+    } else {
       Fluttertoast.showToast(
         backgroundColor: Colors.orange,
         textColor: Colors.white,
-        msg: 'User already exit!',
+        msg: 'Please fill out all required fields!',
         toastLength: Toast.LENGTH_SHORT,
-      );
-    } else {
-      Fluttertoast.showToast(
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
-        msg: 'Registration Successful',
-        toastLength: Toast.LENGTH_SHORT,
-      );
-      Navigator.push(context,
-        MaterialPageRoute(
-          builder: (context) => const DashBoard(),
-        ),
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,7 +73,6 @@ class _SignUpState extends State<SignUp> {
             height: 2,
           ),
         ),
-
         const Text(
           "TSUB",
           style: TextStyle(
@@ -73,11 +83,9 @@ class _SignUpState extends State<SignUp> {
             height: 1,
           ),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         TextField(
           style: const TextStyle(color: Colors.white),
           controller: user,
@@ -97,14 +105,13 @@ class _SignUpState extends State<SignUp> {
             ),
             filled: true,
             fillColor: Colors.grey.withOpacity(0.1),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           ),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         TextField(
           style: const TextStyle(color: Colors.white),
           obscureText: true,
@@ -125,14 +132,13 @@ class _SignUpState extends State<SignUp> {
             ),
             filled: true,
             fillColor: Colors.grey.withOpacity(0.1),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           ),
         ),
-
         const SizedBox(
           height: 24,
         ),
-
         Container(
           height: 40,
           decoration: BoxDecoration(
@@ -150,17 +156,17 @@ class _SignUpState extends State<SignUp> {
             ],
           ),
           child: Center(
-              child: GestureDetector(
-                onTap: register,
-                child: const Text(
-                  "SIGN UP",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1C1C1C),
-                  ),
+            child: GestureDetector(
+              onTap: register,
+              child: const Text(
+                "SIGN UP",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1C1C1C),
                 ),
               ),
+            ),
           ),
         ),
         const SizedBox(

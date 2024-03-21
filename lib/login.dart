@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'Dashboard.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
   @override
   _LoginPageState createState() => _LoginPageState();
 }
+
 class _LoginPageState extends State<Login> {
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
@@ -40,13 +42,13 @@ class _LoginPageState extends State<Login> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-
         const Text(
           "Welcome to",
           style: TextStyle(
@@ -55,7 +57,6 @@ class _LoginPageState extends State<Login> {
             height: 2,
           ),
         ),
-
         const Text(
           "TSUB",
           style: TextStyle(
@@ -66,7 +67,6 @@ class _LoginPageState extends State<Login> {
             height: 1,
           ),
         ),
-
         const Text(
           "Please login to continue",
           style: TextStyle(
@@ -75,11 +75,9 @@ class _LoginPageState extends State<Login> {
             height: 1,
           ),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         TextField(
           controller: user,
           style: const TextStyle(color: Colors.white),
@@ -99,14 +97,13 @@ class _LoginPageState extends State<Login> {
             ),
             filled: true,
             fillColor: Colors.black,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           ),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         TextField(
           obscureText: true,
           style: const TextStyle(color: Colors.white),
@@ -127,14 +124,13 @@ class _LoginPageState extends State<Login> {
             ),
             filled: true,
             fillColor: Colors.black,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
           ),
         ),
-
         const SizedBox(
           height: 24,
         ),
-
         Container(
           height: 40,
           decoration: BoxDecoration(
@@ -153,23 +149,20 @@ class _LoginPageState extends State<Login> {
           ),
           child: Center(
               child: GestureDetector(
-                onTap: login,
-                child: const Text(
-                  "LOGIN",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-          ),
+            onTap: login,
+            child: const Text(
+              "LOGIN",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          )),
         ),
-
         const SizedBox(
           height: 16,
         ),
-
         const Text(
           "FORGOT PASSWORD?",
           style: TextStyle(
@@ -179,7 +172,6 @@ class _LoginPageState extends State<Login> {
             height: 1,
           ),
         ),
-
       ],
     );
   }

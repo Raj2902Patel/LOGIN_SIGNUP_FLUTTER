@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class SignUpOption extends StatelessWidget {
   const SignUpOption({Key? key}) : super(key: key);
   @override
@@ -36,7 +37,7 @@ class SignUpOption extends StatelessWidget {
               ),
             ],
           ),
-          child:  const Center(
+          child: const Center(
             child: Text(
               "SIGN UP",
               style: TextStyle(

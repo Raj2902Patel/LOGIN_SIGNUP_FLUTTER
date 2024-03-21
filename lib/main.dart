@@ -4,6 +4,7 @@ import 'package:capstone_two/login.dart';
 import 'package:capstone_two/login_option.dart';
 import 'package:capstone_two/signup.dart';
 import 'package:capstone_two/signup_option.dart';
+
 // import 'dart:ui' as ui;
 void main() {
   runApp(const MyApp());
@@ -35,7 +36,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   bool login = true;
 
   @override
@@ -47,7 +47,6 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -57,7 +56,9 @@ class _HomePageState extends State<HomePage> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.ease,
-                height: login ? MediaQuery.of(context).size.height * 0.6 : MediaQuery.of(context).size.height * 0.4,
+                height: login
+                    ? MediaQuery.of(context).size.height * 0.6
+                    : MediaQuery.of(context).size.height * 0.4,
                 child: CustomPaint(
                   painter: CurvePainter(login),
                   child: Container(
@@ -65,10 +66,9 @@ class _HomePageState extends State<HomePage> {
                     child: Center(
                       child: SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                          child: login
-                              ? const Login()
-                              : const LoginOption(),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 16),
+                          child: login ? const Login() : const LoginOption(),
                         ),
                       ),
                     ),
@@ -76,7 +76,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
             GestureDetector(
               onTap: () {
                 setState(() {
@@ -86,24 +85,23 @@ class _HomePageState extends State<HomePage> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.ease,
-                height: login ? MediaQuery.of(context).size.height * 0.4 : MediaQuery.of(context).size.height * 0.6,
+                height: login
+                    ? MediaQuery.of(context).size.height * 0.4
+                    : MediaQuery.of(context).size.height * 0.6,
                 child: Container(
                     color: Colors.transparent,
                     padding: EdgeInsets.only(top: login ? 55 : 0),
                     child: Center(
                       child: SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                          child: !login
-                              ? SignUp()
-                              : const SignUpOption(),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 16),
+                          child: !login ? SignUp() : const SignUpOption(),
                         ),
                       ),
-                    )
-                ),
+                    )),
               ),
             ),
-
           ],
         ),
       ),
@@ -112,7 +110,6 @@ class _HomePageState extends State<HomePage> {
 }
 
 class CurvePainter extends CustomPainter {
-
   bool outterCurve;
 
   CurvePainter(this.outterCurve);
@@ -126,14 +123,19 @@ class CurvePainter extends CustomPainter {
         Colors.purpleAccent,
       ],
     ).createShader(Rect.fromCircle(
-      radius: 600, center: const Offset(50, 50),
+      radius: 600,
+      center: const Offset(50, 50),
     ));
     paint.style = PaintingStyle.fill;
 
     Path path = Path();
     path.moveTo(0, 0);
     path.lineTo(0, size.height);
-    path.quadraticBezierTo(size.width * 0.5, outterCurve ? size.height + 110 : size.height - 110, size.width, size.height);
+    path.quadraticBezierTo(
+        size.width * 0.5,
+        outterCurve ? size.height + 110 : size.height - 110,
+        size.width,
+        size.height);
     path.lineTo(size.width, 0);
     path.close();
 
