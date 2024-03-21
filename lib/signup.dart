@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+// import 'package:capstone_two/login.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 
 import 'Dashboard.dart';
+// import 'login_option.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -158,7 +160,7 @@ class _SignUpState extends State<SignUp> {
                     color: Color(0xFF1C1C1C),
                   ),
                 ),
-              )
+              ),
           ),
         ),
         const SizedBox(
@@ -176,9 +178,9 @@ class _SignUpState extends State<SignUp> {
         const SizedBox(
           height: 16,
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Icon(
               Icons.facebook,
               size: 32,
@@ -192,10 +194,8 @@ class _SignUpState extends State<SignUp> {
               size: 32,
               color: Color(0xFFF3D657),
             ),
-
           ],
-        )
-
+        ),
       ],
     );
   }

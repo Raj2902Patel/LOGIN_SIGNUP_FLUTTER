@@ -4,7 +4,7 @@ import 'package:capstone_two/login.dart';
 import 'package:capstone_two/login_option.dart';
 import 'package:capstone_two/signup.dart';
 import 'package:capstone_two/signup_option.dart';
-import 'dart:ui' as ui;
+// import 'dart:ui' as ui;
 void main() {
   runApp(const MyApp());
 }
